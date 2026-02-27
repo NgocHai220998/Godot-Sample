@@ -20,7 +20,6 @@ If `Loading Enabled` is ON:
 - When clicked, `nodes_to_hide` will vanish, and the `loading_icon` will appear.
 - Call `callback.call(true)` in your logic to finish the loading state.
 
-
 ## 🇻🇳 Tiếng Việt
 
 ### 🚀 Hướng dẫn nhanh
