@@ -19,10 +19,18 @@ signal clicked
 		method_name = value
 		update_configuration_warnings()
 
+@export_group("State")
+@export var disabled: bool = false:
+	set(value):
+		disabled = value
+		_update_visual_state()
+@export var disabled_modulate: Color = Color(0.6, 0.6, 0.6, 1.0)
+
 @export_group("Loading")
 @export var loading_enabled: bool = false
 @export var loading_icon: Control
 @export var nodes_to_hide_on_loading: Array[Control]
+
 
 @export_group("FX")
 @export_subgroup("Visual FX")
@@ -38,7 +46,7 @@ signal clicked
 @export var sfx_success: FakeSoundManager.SoundFX = FakeSoundManager.SoundFX.NONE
 @export var sfx_fail: FakeSoundManager.SoundFX = FakeSoundManager.SoundFX.NONE
 
-var disable: bool = false
+
 
 var _loading: bool = false
 var _tween: Tween
@@ -50,18 +58,18 @@ func _ready() -> void:
 	_connect_signals()
 	_set_pivot_center()
 	_set_cursor()
+	_update_visual_state()
 	_show_loading(false)
 
 #region Input Handler
 func _on_click(event: InputEvent) -> void:
-	if _loading or disable: return
+	if _loading or disabled: return
 	if not _is_press_event(event): return
 	
 	_play_click_pop()
 	
 	if handler_node and handler_node.has_method(method_name):
 		FakeSoundManager.play(sfx_click)
-		
 		
 		
 		if loading_enabled:
@@ -72,7 +80,7 @@ func _on_click(event: InputEvent) -> void:
 			handler_node.call(method_name)
 
 func _on_hover_entered() -> void:
-	if _loading or disable: return
+	if _loading or disabled: return
 	
 	FakeSoundManager.play(sfx_hover)
 	_play_hover(true)
@@ -114,14 +122,14 @@ func _play_click_pop() -> void:
 
 func _play_hover(enter: bool) -> void:
 	var tween: Tween = _create_tween()
-	var target_scale: Vector2= Vector2(hover_scale_rate, hover_scale_rate) if enter else Vector2.ONE
+	var target_scale: Vector2 = Vector2(hover_scale_rate, hover_scale_rate) if enter else Vector2.ONE
 	var target_color: Color = glow_color if enter else Color.WHITE
 
-	tween.tween_property(target_node, "scale", target_scale, hover_scale_duration)\
-		.set_ease(Tween.EASE_IN)\
+	tween.tween_property(target_node, "scale", target_scale, hover_scale_duration) \
+		.set_ease(Tween.EASE_IN) \
 		.set_trans(Tween.TRANS_QUAD)
-	tween.parallel().tween_property(target_node, "modulate", target_color, hover_scale_duration)\
-		.set_ease(Tween.EASE_IN)\
+	tween.parallel().tween_property(target_node, "modulate", target_color, hover_scale_duration) \
+		.set_ease(Tween.EASE_IN) \
 		.set_trans(Tween.TRANS_QUAD)
 
 func _is_press_event(event: InputEvent) -> bool:
@@ -129,6 +137,11 @@ func _is_press_event(event: InputEvent) -> bool:
 		(event is InputEventMouseButton and event.pressed) or
 		(event is InputEventScreenTouch and event.pressed)
 	)
+
+func _update_visual_state() -> void:
+	if not is_node_ready(): await ready
+	
+	target_node.modulate = disabled_modulate if disabled else Color.WHITE
 #endregion
 
 func _connect_signals() -> void:
