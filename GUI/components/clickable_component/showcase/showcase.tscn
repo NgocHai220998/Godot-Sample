@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://o3vs4tv4v61r"]
+
+[ext_resource type="Script" uid="uid://c7akbhugf8jjj" path="res://GUI/components/clickable_component/showcase/showcase.gd" id="1_6inv6"]
+[ext_resource type="PackedScene" uid="uid://drbydaa1ga0xu" path="res://GUI/components/clickable_component/clickable_component.tscn" id="2_wmlli"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmlli"]
+font_size = 44
+outline_size = 4
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_one5u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_wmlli"]
+resource_name = "default"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-6.2831855, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_one5u"]
+_data = {
+&"RESET": SubResource("Animation_one5u"),
+&"default": SubResource("Animation_wmlli")
+}
+
+[node name="Showcase" type="CanvasLayer" unique_id=275130598]
+script = ExtResource("1_6inv6")
+
+[node name="ShowcaseLabel" type="Label" parent="." unique_id=511335033]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 33.0
+offset_right = 226.0
+offset_bottom = 94.0
+grow_horizontal = 2
+text = "Clickable Component"
+label_settings = SubResource("LabelSettings_wmlli")
+
+[node name="NormalButton" type="ColorRect" parent="." unique_id=348412191]
+offset_left = 857.0
+offset_top = 174.0
+offset_right = 1030.0
+offset_bottom = 235.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.19973177, 0.19973174, 0.19973174, 1)
+
+[node name="Label" type="Label" parent="NormalButton" unique_id=378222493]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Normal Button"
+
+[node name="ClickableComponent" parent="NormalButton" unique_id=354079384 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("2_wmlli")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_normal_clicked"
+
+[node name="LoadingButton01" type="ColorRect" parent="." unique_id=445678441]
+offset_left = 1337.0
+offset_top = 176.0
+offset_right = 1510.0
+offset_bottom = 237.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.19973177, 0.19973174, 0.19973174, 1)
+
+[node name="Label" type="Label" parent="LoadingButton01" unique_id=904143148]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading Button 01"
+
+[node name="ClickableComponent" parent="LoadingButton01" unique_id=1497372919 node_paths=PackedStringArray("target_node", "handler_node", "loading_icon") instance=ExtResource("2_wmlli")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_loading_clicked"
+loading_enabled = true
+loading_icon = NodePath("../LoadingIcon")
+
+[node name="LoadingIcon" type="Control" parent="LoadingButton01" unique_id=542421743]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LoadingButton01/LoadingIcon" unique_id=1373544991]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.2831855
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingButton01/LoadingIcon" unique_id=1468447208]
+libraries/ = SubResource("AnimationLibrary_one5u")
+autoplay = &"default"
+
+[node name="LoadingButton02" type="ColorRect" parent="." unique_id=603913995]
+offset_left = 1337.0
+offset_top = 305.0
+offset_right = 1510.0
+offset_bottom = 366.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.19973177, 0.19973174, 0.19973174, 1)
+
+[node name="Label" type="Label" parent="LoadingButton02" unique_id=598040912]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading Button 02"
+
+[node name="ClickableComponent" parent="LoadingButton02" unique_id=764593197 node_paths=PackedStringArray("target_node", "handler_node", "loading_icon", "nodes_to_hide_on_loading") instance=ExtResource("2_wmlli")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_loading_clicked"
+loading_enabled = true
+loading_icon = NodePath("../LoadingIcon")
+nodes_to_hide_on_loading = [NodePath("../Label")]
+
+[node name="LoadingIcon" type="Control" parent="LoadingButton02" unique_id=1109781818]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LoadingButton02/LoadingIcon" unique_id=1115668576]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.2831855
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingButton02/LoadingIcon" unique_id=96094373]
+libraries/ = SubResource("AnimationLibrary_one5u")
+autoplay = &"default"

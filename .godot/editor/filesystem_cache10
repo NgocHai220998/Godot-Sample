@@ -1,3 +1,16 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1772187316
+::res://::1772197941
 icon.svg::CompressedTexture2D::3030746865450525584::1772187313::1772187316::1::::<><><>0<>0<>cf75ed82eaea6d870326c8a1fd8ca16e<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+README.md::TextFile::-1::1772188250::0::1::::<><><>0<>0<><>::
+::res://GUI/::1772189476
+::res://GUI/components/::1772189688
+::res://GUI/components/clickable_component/::1772197921
+clickable_component.gd::GDScript::1049591253648062638::1772197672::0::1::::ClickableComponent<>Node<><>0<>1<><>::
+clickable_component.tscn::PackedScene::8355999337077392038::1772197921::0::1::::<><><>0<>0<><>::uid://o7ou5qiu7v2e::::res://GUI/components/clickable_component/clickable_component.gd
+::res://GUI/components/clickable_component/showcase/::1772197917
+showcase.gd::GDScript::7019493718364949239::1772197150::0::1::::<>CanvasLayer<><>0<>0<><>::
+showcase.tscn::PackedScene::1041755142706708825::1772197917::0::1::::<><><>0<>0<><>::uid://c7akbhugf8jjj::::res://GUI/components/clickable_component/showcase/showcase.gd<>uid://drbydaa1ga0xu::::res://GUI/components/clickable_component/clickable_component.tscn
+::res://scripts/::1772195704
+::res://scripts/global/::1772195727
+::res://scripts/global/fake_sound_manager/::1772196483
+fake_sound_manager.gd::GDScript::5858857434710602962::1772196483::0::1::::FakeSoundManager<>RefCounted<><>0<>0<><>::

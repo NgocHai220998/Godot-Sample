@@ -11,8 +11,21 @@ config_version=5
 [application]
 
 config/name="samples"
+run/main_scene="uid://o3vs4tv4v61r"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
+
+[display]
+
+window/size/viewport_width=2304
+window/size/viewport_height=1296
+window/size/window_width_override=2304
+window/size/window_height_override=1296
 
 [physics]
 
