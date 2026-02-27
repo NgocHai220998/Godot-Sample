@@ -2,9 +2,7 @@
 
 A utility component for Godot 4.6 or later that makes any **Control** node interactive. It handles click/hover events, visual feedback (scaling/glow), sound effects, and async loading states automatically.
 
----
-
-## English Version
+## English Version (Vietnamese Version is below)
 
 ### 🚀 Quick Start
 1. Add `ClickableComponent` as a child of any UI element (e.g., `TextureRect`, `Panel`).
@@ -18,11 +16,10 @@ A utility component for Godot 4.6 or later that makes any **Control** node inter
 
 ### 🔄 Loading State
 If `Loading Enabled` is ON:
-- The Handler function must accept a callback: `func my_method(node, callback: Callable)`.
+- The Handler function must accept a callback: `func my_method(callback: Callable)`.
 - When clicked, `nodes_to_hide` will vanish, and the `loading_icon` will appear.
 - Call `callback.call(true)` in your logic to finish the loading state.
 
----
 
 ## 🇻🇳 Tiếng Việt
 
@@ -38,8 +35,6 @@ If `Loading Enabled` is ON:
 
 ### 🔄 Trạng thái Loading
 Nếu bật `Loading Enabled`:
-- Hàm trong Handler phải nhận một callback: `func my_method(node, callback: Callable)`.
+- Hàm trong Handler phải nhận một callback: `func my_method(callback: Callable)`.
 - Khi click, các node trong `nodes_to_hide` sẽ ẩn đi và `loading_icon` hiện lên.
 - Gọi `callback.call(true)` trong logic của bạn để kết thúc trạng thái loading.
-
----

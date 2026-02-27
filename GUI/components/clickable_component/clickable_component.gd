@@ -62,11 +62,14 @@ func _on_click(event: InputEvent) -> void:
 	if handler_node and handler_node.has_method(method_name):
 		FakeSoundManager.play(sfx_click)
 		
-		handler_node.call(method_name, target_node, Callable(self, "_on_action_done"))
 		
-		if loading_enabled: _show_loading(true)
+		
+		if loading_enabled:
+			_show_loading(true)
+			handler_node.call(method_name, Callable(self, "_on_action_done"))
 		else:
 			clicked.emit()
+			handler_node.call(method_name)
 
 func _on_hover_entered() -> void:
 	if _loading or disable: return
