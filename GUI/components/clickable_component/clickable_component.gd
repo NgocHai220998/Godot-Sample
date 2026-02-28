@@ -118,11 +118,13 @@ func _kill_tween() -> void:
 
 func _create_tween() -> Tween:
 	_kill_tween()
-	_tween = get_tree().create_tween()
+	_tween = create_tween()
 	return _tween
 
 func _play_click_pop() -> void:
+	if not is_inside_tree(): return
 	var tween: Tween = _create_tween()
+	if not tween: return
 	
 	tween.tween_property(target_node, "scale",
 		Vector2(click_scale_rate, click_scale_rate), click_scale_duration
@@ -132,7 +134,10 @@ func _play_click_pop() -> void:
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 
 func _play_hover(enter: bool) -> void:
+	if not is_inside_tree(): return
 	var tween: Tween = _create_tween()
+	if not tween: return
+	
 	var target_scale: Vector2 = Vector2(hover_scale_rate, hover_scale_rate) if enter else Vector2.ONE
 	var target_color: Color = glow_color if enter else Color.WHITE
 
