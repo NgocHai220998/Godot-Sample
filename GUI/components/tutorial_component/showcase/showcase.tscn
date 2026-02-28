@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://bigd7o3d7ns1m"]
+
+[ext_resource type="PackedScene" uid="uid://drbydaa1ga0xu" path="res://GUI/components/clickable_component/clickable_component.tscn" id="1_io7cp"]
+[ext_resource type="Script" uid="uid://b1f6nq6rpocc8" path="res://GUI/components/tutorial_component/showcase/showcase.gd" id="1_rjh8k"]
+[ext_resource type="PackedScene" uid="uid://bxlyapw16ldt4" path="res://GUI/components/tutorial_component/step/step_component.tscn" id="3_3iy3h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fgxih"]
+font_size = 44
+outline_size = 4
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hyggd"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_3iy3h"]
+font_size = 32
+
+[node name="Showcase" type="CanvasLayer" unique_id=1872130341]
+script = ExtResource("1_rjh8k")
+
+[node name="ShowcaseLabel" type="Label" parent="." unique_id=1937572739]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 33.0
+offset_right = 226.0
+offset_bottom = 94.0
+grow_horizontal = 2
+text = "Tutorial Component"
+label_settings = SubResource("LabelSettings_fgxih")
+
+[node name="StartComponent" type="ColorRect" parent="." unique_id=1204072111]
+offset_left = 979.0
+offset_top = 724.0
+offset_right = 1372.0
+offset_bottom = 813.0
+color = Color(0.1494745, 0.14947453, 0.1494745, 1)
+
+[node name="Label" type="Label" parent="StartComponent" unique_id=474553645]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -22.5
+offset_right = 37.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+label_settings = SubResource("LabelSettings_hyggd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickableComponent" parent="StartComponent" unique_id=354079384 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("1_io7cp")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_start_clicked"
+
+[node name="Step1" type="ColorRect" parent="." unique_id=788062339]
+offset_left = 1496.0
+offset_top = 264.0
+offset_right = 1889.0
+offset_bottom = 353.0
+color = Color(0.1494745, 0.14947453, 0.1494745, 1)
+
+[node name="Label" type="Label" parent="Step1" unique_id=1243320202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -22.5
+offset_right = 37.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Step 1"
+label_settings = SubResource("LabelSettings_hyggd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickableComponent" parent="Step1" unique_id=2060962576 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("1_io7cp")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_step1_clicked"
+
+[node name="StepComponent" parent="Step1" unique_id=1190846250 node_paths=PackedStringArray("target_nodes", "target_clickable") instance=ExtResource("3_3iy3h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+step_id = 1
+target_nodes = [NodePath("..")]
+target_clickable = NodePath("../ClickableComponent")
+
+[node name="Step2" type="ColorRect" parent="." unique_id=143829951]
+offset_left = 385.0
+offset_top = 292.0
+offset_right = 778.0
+offset_bottom = 381.0
+color = Color(0.1494745, 0.14947453, 0.1494745, 1)
+
+[node name="Label" type="Label" parent="Step2" unique_id=435015058]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -22.5
+offset_right = 37.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Step 2"
+label_settings = SubResource("LabelSettings_hyggd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickableComponent" parent="Step2" unique_id=2019437981 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("1_io7cp")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_step2_clicked"
+
+[node name="StepComponent" parent="Step2" unique_id=609053139 node_paths=PackedStringArray("target_nodes", "target_clickable") instance=ExtResource("3_3iy3h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+step_id = 2
+target_nodes = [NodePath(".."), NodePath("../../Control/FakePanel")]
+target_clickable = NodePath("../ClickableComponent")
+
+[node name="Step3" type="ColorRect" parent="." unique_id=1110782770]
+offset_left = 1607.0
+offset_top = 586.0
+offset_right = 2000.0
+offset_bottom = 675.0
+color = Color(0.1494745, 0.14947453, 0.1494745, 1)
+
+[node name="Label" type="Label" parent="Step3" unique_id=2131508773]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -22.5
+offset_right = 37.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Step 3"
+label_settings = SubResource("LabelSettings_hyggd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickableComponent" parent="Step3" unique_id=1061620340 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("1_io7cp")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_step3_clicked"
+
+[node name="StepComponent" parent="Step3" unique_id=391193772 node_paths=PackedStringArray("target_nodes", "target_clickable") instance=ExtResource("3_3iy3h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+step_id = 3
+target_nodes = [NodePath("..")]
+target_clickable = NodePath("../ClickableComponent")
+advance_mode = 1
+
+[node name="Step4" type="ColorRect" parent="." unique_id=354014019]
+offset_left = 334.0
+offset_top = 636.0
+offset_right = 727.0
+offset_bottom = 725.0
+color = Color(0.1494745, 0.14947453, 0.1494745, 1)
+
+[node name="Label" type="Label" parent="Step4" unique_id=1295164012]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -22.5
+offset_right = 37.5
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Step4"
+label_settings = SubResource("LabelSettings_hyggd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickableComponent" parent="Step4" unique_id=1244543080 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("1_io7cp")]
+target_node = NodePath("..")
+handler_node = NodePath("../..")
+method_name = "_on_step4_clicked"
+
+[node name="StepComponent" parent="Step4" unique_id=1791931563 node_paths=PackedStringArray("target_nodes", "target_clickable") instance=ExtResource("3_3iy3h")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+step_id = 4
+target_nodes = [NodePath("..")]
+target_clickable = NodePath("../ClickableComponent")
+
+[node name="Control" type="Control" parent="." unique_id=2024851913]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FakePanel" type="ColorRect" parent="Control" unique_id=2026745661]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 292.0
+offset_right = 363.0
+offset_bottom = 612.0
+color = Color(0.32954505, 0.39646304, 0.40625888, 1)
+
+[node name="DescriptionHere" type="Label" parent="Control/FakePanel" unique_id=1419588812]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -11.5
+offset_right = 65.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Description Here"
+label_settings = SubResource("LabelSettings_3iy3h")
