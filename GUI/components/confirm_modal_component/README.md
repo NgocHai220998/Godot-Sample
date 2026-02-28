@@ -25,7 +25,6 @@ var modal = ConfirmModalComponent.release(self, {
 	"description": "Are you sure you want to delete your save file?",
 	"cancel": "No, Wait!",
 	"ok": "Yes, Delete",
-	"animate_in_out": true,
 	"cancel_on_overlay_click": false # Force them to click a button
 })
 
@@ -47,8 +46,7 @@ When calling `ConfirmModalComponent.release(parent, custom_data)`, you can pass 
 | **description** | `String` | `"Are you sure you want to proceed?"`| The main question/message text. |
 | **cancel** | `String` | `"Cancel"` | Label text for the Cancel button. |
 | **ok** | `String` | `"Confirm"` | Label text for the Confirm/OK button. |
-| **cancel_on_overlay_click**| `bool` | `true` | If true, clicking outside the modal box will simulate a Cancel click. |
-| **animate_in_out** | `bool` | `true` | Toggles the scale and fade transitions. |
+| **cancel_on_overlay_click**| `bool` | `false` | If true, clicking outside the modal box will simulate a Cancel click. |
 
 ---
 
@@ -71,8 +69,7 @@ var modal = ConfirmModalComponent.release(self, {
 	"description": "Bạn có chắc chắn muốn xoá tài khoản này không?",
 	"cancel": "Quay Lại",
 	"ok": "Xoá Ngay",
-	"animate_in_out": true,
-	"cancel_on_overlay_click": false # Bắt người dùng phải bấm một trong 2 nút
+	"cancel_on_overlay_click": true
 })
 
 # 2. Chờ kết quả từ người dùng
@@ -93,5 +90,4 @@ Khi gọi hàm `ConfirmModalComponent.release(parent, custom_data)`, bạn có t
 | **description** | `String` | `"Are you sure you want to proceed?"`| Nội dung câu hỏi/cảnh báo chính. |
 | **cancel** | `String` | `"Cancel"` | Chữ hiển thị trên nút Huỷ (nút bên trái). |
 | **ok** | `String` | `"Confirm"` | Chữ hiển thị trên nút Đồng Ý (nút bên phải). |
-| **cancel_on_overlay_click**| `bool` | `true` | Nếu bằng true, click chuột ra màn hình nền đen sẽ tự động Huỷ (Cancel). |
-| **animate_in_out** | `bool` | `true` | Bật/tắt hiệu ứng bay ra bay vào của hộp thoại. |
+| **cancel_on_overlay_click**| `bool` | `false` | Nếu bằng true, click chuột ra màn hình nền đen sẽ tự động Huỷ (Cancel). |
