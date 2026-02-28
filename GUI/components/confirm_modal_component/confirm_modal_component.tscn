@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://bgnh3bps1r5cl"]
+
+[ext_resource type="Script" uid="uid://c748utyfqj04r" path="res://GUI/components/confirm_modal_component/confirm_modal_component.gd" id="1_xq3yd"]
+[ext_resource type="PackedScene" uid="uid://drbydaa1ga0xu" path="res://GUI/components/clickable_component/clickable_component.tscn" id="2_gwwsr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xq3yd"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_gwwsr"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_rsqd2"]
+font_size = 32
+
+[node name="ConfirmModalComponent" type="CanvasLayer" unique_id=1559783689]
+layer = 128
+script = ExtResource("1_xq3yd")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=334648469]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="Panel" type="ColorRect" parent="." unique_id=123677206]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19614312, 0.19614306, 0.19614309, 1)
+
+[node name="Header" type="ColorRect" parent="Panel" unique_id=1897794928]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.0
+offset_top = -28.0
+offset_right = 226.0
+offset_bottom = 54.0
+grow_horizontal = 2
+color = Color(0.37981048, 0.37981054, 0.37981048, 1)
+
+[node name="HeaderLabel" type="Label" parent="Panel/Header" unique_id=2048849901]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -28.0
+offset_right = 115.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Confirm Modal"
+label_settings = SubResource("LabelSettings_xq3yd")
+
+[node name="DescriptionLabel" type="Label" parent="Panel" unique_id=699607571]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -22.5
+offset_right = 512.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Are you sure you want to proceed?"
+label_settings = SubResource("LabelSettings_gwwsr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButtonPanel" type="ColorRect" parent="Panel" unique_id=1472202409]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 546.0
+offset_right = 764.0
+offset_bottom = 625.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+color = Color(0.3673066, 0.29078734, 0.11473695, 1)
+
+[node name="CancelLabel" type="Label" parent="Panel/CancelButtonPanel" unique_id=2061617263]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -25.5
+offset_right = 51.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cancel"
+label_settings = SubResource("LabelSettings_rsqd2")
+
+[node name="ClickableComponent" parent="Panel/CancelButtonPanel" unique_id=354079384 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("2_gwwsr")]
+target_node = NodePath("..")
+handler_node = NodePath("../../..")
+method_name = "_on_cancel_clicked"
+
+[node name="OkButtonPanel" type="ColorRect" parent="Panel" unique_id=105929269]
+layout_mode = 0
+offset_left = 808.0
+offset_top = 546.0
+offset_right = 1084.0
+offset_bottom = 625.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+color = Color(1.6845763e-07, 0.36004728, 0.25666383, 1)
+
+[node name="OkLabel" type="Label" parent="Panel/OkButtonPanel" unique_id=1037838333]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -25.5
+offset_right = 51.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Confirm"
+label_settings = SubResource("LabelSettings_rsqd2")
+
+[node name="ClickableComponent" parent="Panel/OkButtonPanel" unique_id=595190600 node_paths=PackedStringArray("target_node", "handler_node") instance=ExtResource("2_gwwsr")]
+target_node = NodePath("..")
+handler_node = NodePath("../../..")
+method_name = "_on_ok_clicked"
