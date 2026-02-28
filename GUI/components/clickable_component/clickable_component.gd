@@ -25,6 +25,7 @@ signal clicked
 		disabled = value
 		_update_visual_state()
 @export var disabled_modulate: Color = Color(0.6, 0.6, 0.6, 1.0)
+@export var click_cooldown: float = 0.15
 
 @export_group("Loading")
 @export var loading_enabled: bool = false
@@ -47,8 +48,8 @@ signal clicked
 @export var sfx_fail: FakeSoundManager.SoundFX = FakeSoundManager.SoundFX.NONE
 
 
-
 var _loading: bool = false
+var _click_locked: bool = false # FEATURE: Khóa click tạm thời
 var _tween: Tween
 
 func _ready() -> void:
@@ -63,8 +64,13 @@ func _ready() -> void:
 
 #region Input Handler
 func _on_click(event: InputEvent) -> void:
-	if _loading or disabled: return
+	if _loading or disabled or _click_locked: return
 	if not _is_press_event(event): return
+	
+	# Lock click if cooldown is set
+	if click_cooldown > 0:
+		_click_locked = true
+		get_tree().create_timer(click_cooldown).timeout.connect(_unlock_click)
 	
 	_play_click_pop()
 	
@@ -74,7 +80,7 @@ func _on_click(event: InputEvent) -> void:
 		
 		if loading_enabled:
 			_show_loading(true)
-			handler_node.call(method_name, Callable(self, "_on_action_done"))
+			handler_node.call(method_name, Callable(self , "_on_action_done"))
 		else:
 			clicked.emit()
 			handler_node.call(method_name)
@@ -86,7 +92,12 @@ func _on_hover_entered() -> void:
 	_play_hover(true)
 
 func _on_hover_exited() -> void:
+	if _loading or disabled: return
+	
 	_play_hover(false)
+
+func _unlock_click() -> void:
+	_click_locked = false
 #endregion
 
 #region Callback Handler
