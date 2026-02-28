@@ -55,6 +55,7 @@ var _tween: Tween
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		_auto_assign_target()
+		return
 	
 	_connect_signals()
 	_set_pivot_center()
