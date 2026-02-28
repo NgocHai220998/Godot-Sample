@@ -1,0 +1,59 @@
+# Tooltip Component Guide
+
+A highly customizable, easy-to-use tooltip component for Godot 4.6+. Attach it to any **Control** node to display helpful information with juicy intro/outro animations. It fully supports both Hover-to-Show and Click-to-Toggle modes.
+
+---
+
+## 🇺🇸 English Guide (Hướng dẫn tiếng Việt nằm ở phần dưới)
+
+### ✨ Core Features
+- **Two Display Modes**: Choose between hovering over an element (like an info icon) or clicking an element to show the tooltip.
+- **Juicy Animations**: Built-in scale tweens with overshoot for both opening and closing the tooltip.
+- **Auto-Assign Nodes**: Automatically detects its parent as the target node if not explicitly assigned.
+- **Click-Outside to Close**: In Click mode, clicking anywhere outside the target and the tooltip itself automatically closes it safely.
+- **Hover Delay**: Built-in customizable delay (debounce) for Hover mode, preventing the tooltip from flickering when the mouse just passes by quickly.
+
+### 🚀 Installation & Setup
+1. Add `TooltipComponent.gd` as a child node to the UI element you want to have a tooltip (e.g., a "Help" button).
+2. Create your actual Tooltip UI (like a PanelContainer with a Label) and place it somewhere in the scene, usually as a child of the `TooltipComponent`.
+3. Select the `TooltipComponent` node. In the Inspector:
+    * **Target Node**: Automatically assigned to the parent.
+    * **Tooltip Content**: Assign the Tooltip UI you created in Step 2 here.
+
+### 🛠 Configuration (Inspector)
+| Group | Property | Description |
+| :--- | :--- | :--- |
+| **Nodes** | Target Node | The UI element that the user interacts with (hover/click). |
+| | Tooltip Content | The actual UI box (Panel/Label) that will be shown/hidden. |
+| **Behavior**| Display Mode | **HOVER_TO_SHOW**: shows when mouse is over. **CLICK_TO_TOGGLE**: shows/hides when clicked. |
+| | Hover Delay | Time in seconds to wait before showing the tooltip in HOVER mode. |
+| **FX** | Overshoot Scale | How big the tooltip scales up before settling back to normal size (e.g., 1.015). |
+| | Sfx Open | Sound effect to play when the tooltip is opened. |
+
+---
+
+## 🇻🇳 Hướng Dẫn Sử Dụng (Vietnamese Guide)
+
+### ✨ Tính Năng Chính
+- **Hai chế độ hiển thị**: Chọn giữa việc rê chuột vào (Hover) hoặc nhấn chuột vào (Click) để hiển thị bảng Tooltip.
+- **Animation "Juicy"**: Tích hợp sẵn hiệu ứng phóng to nảy nhẹ (overshoot) khi mở và thu nhỏ mượt mà khi đóng.
+- **Tự động nhận diện Node**: Tự động lấy node cha làm mục tiêu tương tác nếu bạn quên gán.
+- **Click ra ngoài để đóng**: Ở chế độ Click, nhấn chuột ra ngoài vùng Tooltip và Node mục tiêu sẽ tự động đóng Tooltip lại.
+- **Độ trễ Hover (Hover Delay)**: Có sẵn thời gian chờ tích hợp để Tooltip không bị chớp nháy liên tục khi người chơi vô tình lia chuột ngang qua nút.
+
+### 🚀 Cài Đặt & Khởi Tạo
+1. Thêm `TooltipComponent.gd` làm node con của UI element mà bạn muốn gắn Tooltip (Ví dụ: một nút "Chấm hỏi").
+2. Tạo giao diện cho bảng Tooltip của bạn (Ví dụ: PanelContainer chứa Label) và xếp nó vào Scene, thường là đặt làm con của `TooltipComponent`.
+3. Chọn node `TooltipComponent`. Trong bảng Inspector:
+    * **Target Node**: Tự động nhận diện là node cha.
+    * **Tooltip Content**: Kéo thả cái giao diện bảng Tooltip ở Bước 2 vào đây.
+
+### 🛠 Cấu Hình (Bảng Inspector)
+| Nhóm | Thuộc tính | Mô tả |
+| :--- | :--- | :--- |
+| **Nodes** | Target Node | Node UI mà người dùng sẽ rê/click chuột vào. |
+| | Tooltip Content | Cái bảng UI (Panel/Label) thực sự sẽ được dùng làm nội dung hiện lên. |
+| **Behavior**| Display Mode | **HOVER_TO_SHOW**: Rê chuột để hiện. **CLICK_TO_TOGGLE**: Click để bật/tắt. |
+| | Hover Delay | Thời gian chờ (giây) trước khi hiện Tooltip kể từ khi chuột chạm vào (chỉ dùng cho mode HOVER). |
+| **FX** | Overshoot Scale | Mức độ phóng to (khoảng nảy) của Tooltip trước khi trở về kích thước 1.0 (ví dụ: 1.015). |
+| | Sfx Open | Âm thanh phát ra khi bảng Tooltip bật lên. |
